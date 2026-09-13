@@ -6,9 +6,6 @@
                 <!-- Logo / Brand -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" class="flex items-center gap-2 text-xl font-bold tracking-tight text-white">
-                        <div class="bg-gradient-to-tr from-amber-500 to-emerald-400 p-2 rounded-lg text-slate-950 font-black shadow-md">
-                            ⚡
-                        </div>
                         <span>Rajesh <span class="text-emerald-400">Pro</span></span>
                     </a>
                 </div>
@@ -16,19 +13,19 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-4 sm:-my-px sm:flex">
                     <a href="{{ route('dashboard') }}" class="px-3 py-2 rounded-md text-sm font-medium transition-colors {{ request()->routeIs('dashboard') ? 'bg-slate-800 text-emerald-400 font-semibold' : 'text-slate-300 hover:text-white hover:bg-slate-800/60' }}">
-                        📊 Dashboard
+                        Dashboard
                     </a>
                     <a href="{{ route('billing.index') }}" class="px-3 py-2 rounded-md text-sm font-medium transition-colors {{ request()->routeIs('billing.*') ? 'bg-slate-800 text-emerald-400 font-semibold' : 'text-slate-300 hover:text-white hover:bg-slate-800/60' }}">
-                        💳 POS Billing
+                        POS Billing
                     </a>
                     <a href="{{ route('spares.index') }}" class="px-3 py-2 rounded-md text-sm font-medium transition-colors {{ request()->routeIs('spares.*') ? 'bg-slate-800 text-emerald-400 font-semibold' : 'text-slate-300 hover:text-white hover:bg-slate-800/60' }}">
-                        🔧 Spares Inventory
+                        Spares Inventory
                     </a>
                     <a href="{{ route('invoices.index') }}" class="px-3 py-2 rounded-md text-sm font-medium transition-colors {{ request()->routeIs('invoices.*') ? 'bg-slate-800 text-emerald-400 font-semibold' : 'text-slate-300 hover:text-white hover:bg-slate-800/60' }}">
-                        🧾 Invoices & Sales
+                        Invoices & Sales
                     </a>
                     <a href="{{ route('customers.index') }}" class="px-3 py-2 rounded-md text-sm font-medium transition-colors {{ request()->routeIs('customers.*') ? 'bg-slate-800 text-emerald-400 font-semibold' : 'text-slate-300 hover:text-white hover:bg-slate-800/60' }}">
-                        👥 Customers
+                        Customers
                     </a>
                 </div>
             </div>
@@ -38,7 +35,6 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-1.5 border border-slate-700 text-sm leading-4 font-medium rounded-lg text-slate-200 bg-slate-800 hover:bg-slate-700 focus:outline-none transition ease-in-out duration-150">
-                            <span class="mr-2">👤</span>
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ms-1">
@@ -83,11 +79,11 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-slate-900 border-t border-slate-800">
         <div class="pt-2 pb-3 space-y-1 px-2">
-            <a href="{{ route('dashboard') }}" class="block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('dashboard') ? 'bg-slate-800 text-emerald-400' : 'text-slate-300' }}">📊 Dashboard</a>
-            <a href="{{ route('billing.index') }}" class="block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('billing.*') ? 'bg-slate-800 text-emerald-400' : 'text-slate-300' }}">💳 POS Billing</a>
-            <a href="{{ route('spares.index') }}" class="block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('spares.*') ? 'bg-slate-800 text-emerald-400' : 'text-slate-300' }}">🔧 Spares Inventory</a>
-            <a href="{{ route('invoices.index') }}" class="block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('invoices.*') ? 'bg-slate-800 text-emerald-400' : 'text-slate-300' }}">🧾 Invoices & Sales</a>
-            <a href="{{ route('customers.index') }}" class="block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('customers.*') ? 'bg-slate-800 text-emerald-400' : 'text-slate-300' }}">👥 Customers</a>
+            <a href="{{ route('dashboard') }}" class="block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('dashboard') ? 'bg-slate-800 text-emerald-400' : 'text-slate-300' }}">Dashboard</a>
+            <a href="{{ route('billing.index') }}" class="block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('billing.*') ? 'bg-slate-800 text-emerald-400' : 'text-slate-300' }}">POS Billing</a>
+            <a href="{{ route('spares.index') }}" class="block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('spares.*') ? 'bg-slate-800 text-emerald-400' : 'text-slate-300' }}">Spares Inventory</a>
+            <a href="{{ route('invoices.index') }}" class="block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('invoices.*') ? 'bg-slate-800 text-emerald-400' : 'text-slate-300' }}">Invoices & Sales</a>
+            <a href="{{ route('customers.index') }}" class="block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('customers.*') ? 'bg-slate-800 text-emerald-400' : 'text-slate-300' }}">Customers</a>
         </div>
 
         <div class="pt-4 pb-3 border-t border-slate-800 px-4">

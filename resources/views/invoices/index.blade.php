@@ -3,12 +3,12 @@
         <div class="flex items-center justify-between">
             <div>
                 <h2 class="font-bold text-2xl text-slate-800 leading-tight">
-                    🧾 Invoices & Sales History
+                    Invoices & Sales History
                 </h2>
                 <p class="text-xs text-slate-500 mt-1">View, search, and reprint generated customer invoices.</p>
             </div>
             <a href="{{ route('billing.index') }}" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2 rounded-xl text-sm shadow-sm">
-                ⚡ New Invoice
+                New Invoice
             </a>
         </div>
     </x-slot>
@@ -80,7 +80,7 @@
                                             View
                                         </a>
                                         <a href="{{ route('invoices.print', $inv->id) }}" target="_blank" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold px-2.5 py-1 rounded-lg">
-                                            🖨️ Print
+                                            Print
                                         </a>
                                     </td>
                                 </tr>

@@ -2,10 +2,10 @@
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <h2 class="font-bold text-2xl text-slate-800 leading-tight">
-                ➕ Add New Spare Part
+                Add New Spare Part
             </h2>
             <a href="{{ route('spares.index') }}" class="text-xs bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-3 py-1.5 rounded-lg">
-                ← Back to Inventory
+                Back to Inventory
             </a>
         </div>
     </x-slot>

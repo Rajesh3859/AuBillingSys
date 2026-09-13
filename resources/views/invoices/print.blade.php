@@ -37,10 +37,9 @@
 <body class="bg-slate-100 p-2 sm:p-6 antialiased text-slate-900 invoice-font min-h-screen">
 
     <div class="no-print max-w-3xl mx-auto mb-4 flex justify-between items-center px-1">
-        <a href="{{ route('invoices.show', $invoice->id) }}" class="text-xs bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-3 py-1.5 rounded-lg transition-colors">← Back</a>
-        <button onclick="window.print()" class="text-xs bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-4 py-2 rounded-lg shadow-sm transition-colors flex items-center gap-1.5">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
-            <span>Print Invoice / Save as PDF</span>
+        <a href="{{ route('invoices.show', $invoice->id) }}" class="text-xs bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-3 py-1.5 rounded-lg transition-colors">Back</a>
+        <button onclick="window.print()" class="text-xs bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-4 py-2 rounded-lg shadow-sm transition-colors">
+            Print Invoice / Save as PDF
         </button>
     </div>
 

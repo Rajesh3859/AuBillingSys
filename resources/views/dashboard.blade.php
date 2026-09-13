@@ -105,7 +105,7 @@
                                     <p class="text-micro-label text-rose-800 font-semibold">Spare parts at or below reorder threshold</p>
                                 </div>
                                 <a href="{{ route('spares.index', ['stock_status' => 'low']) }}" class="text-micro-label bg-rose-700 text-white px-3.5 py-1.5 rounded-lg font-bold hover:bg-rose-800 transition-colors">
-                                    Manage Inventory →
+                                    Manage Inventory
                                 </a>
                             </div>
 
@@ -144,7 +144,7 @@
                                 <p class="text-micro-label text-slate-600">Latest generated customer invoices</p>
                             </div>
                             <a href="{{ route('invoices.index') }}" class="text-micro-label font-bold text-emerald-800 hover:text-emerald-900">
-                                View All Invoices →
+                                View All Invoices
                             </a>
                         </div>
 

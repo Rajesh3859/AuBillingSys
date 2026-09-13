@@ -9,9 +9,9 @@
             </div>
             <div class="flex items-center gap-2">
                 <a href="{{ route('invoices.index') }}" class="text-micro-label bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-3 py-2 rounded-lg">
-                    ← Invoices List
+                    Invoices List
                 </a>
-                <a href="{{ route('invoices.print', $invoice->id) }}" target="_blank" class="text-micro-label bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-4 py-2 rounded-lg shadow-sm flex items-center gap-1.5">
+                <a href="{{ route('invoices.print', $invoice->id) }}" target="_blank" class="text-micro-label bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-4 py-2 rounded-lg shadow-sm">
                     Print Invoice
                 </a>
             </div>
