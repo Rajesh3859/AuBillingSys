@@ -6,7 +6,7 @@ services:
     region: oregon
     envVars:
       - key: APP_NAME
-        value: "AutoSpares Billing"
+        value: "Rajesh Billing"
       - key: APP_ENV
         value: production
       - key: APP_DEBUG

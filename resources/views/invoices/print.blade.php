@@ -30,7 +30,7 @@
         <!-- Header -->
         <div class="flex justify-between items-start border-b border-slate-300 pb-6">
             <div>
-                <h1 class="text-2xl font-bold tracking-tight text-slate-900 uppercase">AUTOSPARES PRO</h1>
+                <h1 class="text-2xl font-bold tracking-tight text-slate-900 uppercase">RAJESH PRO</h1>
                 <p class="text-xs text-slate-600 mt-1">Authorized Genuine Automobile Spares & Components<br>GSTIN: 29AAAAA0000A1Z5 | Phone: +91 98765 43210</p>
             </div>
             <div class="text-right">
@@ -109,7 +109,7 @@
         <!-- Footer terms -->
         <div class="pt-8 border-t border-slate-300 text-center text-[10px] text-slate-500 space-y-1">
             <p>Thank you for your business! Goods once sold can only be exchanged within 7 days with valid receipt.</p>
-            <p class="font-mono">Computer Generated Tax Invoice • AutoSpares Pro Systems</p>
+            <p class="font-mono">Computer Generated Tax Invoice • Rajesh Pro Systems</p>
         </div>
 
     </div>

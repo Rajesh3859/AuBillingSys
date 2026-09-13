@@ -6,7 +6,7 @@
         <!-- Brand / Header -->
         <div class="h-16 px-6 flex items-center justify-between border-b border-slate-800 bg-slate-950">
             <a href="{{ route('dashboard') }}" class="flex items-center gap-2 text-base font-bold tracking-tight text-white">
-                <span class="text-emerald-400 font-extrabold">AutoSpares</span>
+                <span class="text-emerald-400 font-extrabold">Rajesh</span>
                 <span class="text-slate-300 font-normal">Pro</span>
             </a>
             <!-- Mobile Close Button -->

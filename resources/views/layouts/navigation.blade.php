@@ -9,7 +9,7 @@
                         <div class="bg-gradient-to-tr from-amber-500 to-emerald-400 p-2 rounded-lg text-slate-950 font-black shadow-md">
                             ⚡
                         </div>
-                        <span>AutoSpares <span class="text-emerald-400">Pro</span></span>
+                        <span>Rajesh <span class="text-emerald-400">Pro</span></span>
                     </a>
                 </div>
 

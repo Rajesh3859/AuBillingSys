@@ -34,7 +34,7 @@
                 <div class="flex flex-col sm:flex-row justify-between border-b border-slate-200 pb-6 gap-4">
                     <div>
                         <div class="flex items-center gap-2 text-section-header font-bold text-slate-900 uppercase">
-                            AutoSpares Pro
+                            Rajesh Pro
                         </div>
                         <p class="text-micro-label text-slate-600 mt-1">Automobile Spares & Billing Center<br>GSTIN: 29AAAAA0000A1Z5</p>
                     </div>
