@@ -20,6 +20,30 @@ if (!file_exists($storageDir)) {
     @mkdir('/tmp/bootstrap/cache', 0755, true);
 }
 
+// Fallback SQLite database for Vercel if PostgreSQL is not configured
+$sqliteDb = '/tmp/database.sqlite';
+if (!file_exists($sqliteDb)) {
+    @touch($sqliteDb);
+}
+
+// Set required fallback environment variables if not defined in Vercel dashboard
+if (empty($_ENV['APP_KEY']) && empty(getenv('APP_KEY'))) {
+    putenv("APP_KEY=base64:B/NCyXoOTtrQMolZ77gou1CxHMvQeHyVPAMbepRHD0c=");
+    $_ENV['APP_KEY'] = 'base64:B/NCyXoOTtrQMolZ77gou1CxHMvQeHyVPAMbepRHD0c=';
+}
+
+if (empty($_ENV['DB_CONNECTION']) && empty(getenv('DB_CONNECTION'))) {
+    putenv("DB_CONNECTION=sqlite");
+    putenv("DB_DATABASE={$sqliteDb}");
+    $_ENV['DB_CONNECTION'] = 'sqlite';
+    $_ENV['DB_DATABASE'] = $sqliteDb;
+}
+
+if (empty($_ENV['SESSION_DRIVER']) && empty(getenv('SESSION_DRIVER'))) {
+    putenv("SESSION_DRIVER=cookie");
+    $_ENV['SESSION_DRIVER'] = 'cookie';
+}
+
 putenv("APP_STORAGE_PATH={$storageDir}");
 putenv("VIEW_COMPILED_PATH={$storageDir}/framework/views");
 
