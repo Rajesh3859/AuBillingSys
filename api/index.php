@@ -23,6 +23,12 @@ if (!file_exists($bootstrapCacheDir)) {
     @mkdir($bootstrapCacheDir, 0755, true);
 }
 
+putenv("VERCEL=1");
+putenv("APP_SERVICES_CACHE={$bootstrapCacheDir}/services.php");
+putenv("APP_PACKAGES_CACHE={$bootstrapCacheDir}/packages.php");
+putenv("APP_ROUTES_CACHE={$bootstrapCacheDir}/routes-v7.php");
+putenv("APP_CONFIG_CACHE={$bootstrapCacheDir}/config.php");
+
 // Fallback SQLite database for Vercel if PostgreSQL is not configured
 $sqliteDb = '/tmp/database.sqlite';
 if (!file_exists($sqliteDb)) {

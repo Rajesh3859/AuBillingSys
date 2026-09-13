@@ -22,8 +22,7 @@ $app = Application::configure(basePath: dirname(__DIR__))
 
 if (isset($_ENV['VERCEL']) || isset($_SERVER['VERCEL']) || isset($_ENV['VERCEL_ENV']) || getenv('VERCEL')) {
     $app->useStoragePath('/tmp/storage');
-    $app->register(Illuminate\Filesystem\FilesystemServiceProvider::class);
-    $app->register(Illuminate\View\ViewServiceProvider::class);
+    $app->instance('manifest.store', '/tmp/bootstrap/cache/packages.php');
 }
 
 return $app;
