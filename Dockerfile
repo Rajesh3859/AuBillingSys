@@ -7,7 +7,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Production PHP Application
-FROM php:8.3-apache
+FROM php:8.4-apache
 
 # Install system dependencies & PHP extensions required by Laravel
 RUN apt-get update && apt-get install -y \
