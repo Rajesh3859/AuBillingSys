@@ -12,11 +12,12 @@
 }
 
 @layer utilities {
-    /* Main KPI Banner: Scaled down gracefully on mobile (16pt - 22pt - 28pt) */
+    /* Main KPI Banner: Fluid scaling across mobile (18px), tablet (22px), and desktop (28px) */
     .text-kpi-banner {
-        font-size: clamp(16pt, 4vw, 24pt);
-        font-weight: 700;
-        line-height: 1.1;
+        font-size: clamp(1.125rem, 2.8vw, 1.75rem);
+        font-weight: 800;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
     }
 
     /* Section Headers: Responsive (12pt - 14pt - 16pt) */

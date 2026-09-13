@@ -18,61 +18,69 @@
     <div class="py-6 bg-slate-100 min-h-screen">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
 
-            <!-- KPI Cards Banner (Scaled down for compact view across mobile, tablet & desktop) -->
-            <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+            <!-- KPI Cards Banner (Fluid and responsive across mobile, tablet & desktop) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
                 
                 <!-- Today Sales -->
-                <div class="bg-white p-3.5 sm:p-5 rounded-xl shadow-sm border border-slate-300">
-                    <div class="flex items-center justify-between">
-                        <span class="text-micro-label font-bold text-slate-700 uppercase tracking-wider">Today's Sales</span>
-                        <span class="text-micro-label font-bold text-emerald-800 bg-emerald-50 px-1.5 sm:px-2 py-0.5 rounded border border-emerald-300">DAILY</span>
+                <div class="bg-white p-4 sm:p-5 rounded-xl shadow-sm border border-slate-300 min-w-0 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wider truncate">Today's Sales</span>
+                            <span class="text-[10px] sm:text-xs font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-300 shrink-0">DAILY</span>
+                        </div>
+                        <div class="text-kpi-banner text-slate-900 mt-2 sm:mt-3 break-words sm:truncate" title="₹{{ number_format($todaySales, 2) }}">
+                            ₹{{ number_format($todaySales, 2) }}
+                        </div>
                     </div>
-                    <div class="text-kpi-banner text-slate-900 mt-2 sm:mt-3 font-bold">
-                        ₹{{ number_format($todaySales, 2) }}
-                    </div>
-                    <div class="text-micro-label text-slate-600 font-medium mt-1.5 sm:mt-2 truncate">
+                    <div class="text-xs text-slate-500 font-medium mt-2 truncate">
                         Updated live from terminal
                     </div>
                 </div>
 
                 <!-- Monthly Revenue -->
-                <div class="bg-white p-3.5 sm:p-5 rounded-xl shadow-sm border border-slate-300">
-                    <div class="flex items-center justify-between">
-                        <span class="text-micro-label font-bold text-slate-700 uppercase tracking-wider">Monthly Sales</span>
-                        <span class="text-micro-label font-bold text-blue-800 bg-blue-50 px-1.5 sm:px-2 py-0.5 rounded border border-blue-300">MONTHLY</span>
+                <div class="bg-white p-4 sm:p-5 rounded-xl shadow-sm border border-slate-300 min-w-0 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wider truncate">Monthly Sales</span>
+                            <span class="text-[10px] sm:text-xs font-bold text-blue-800 bg-blue-50 px-2 py-0.5 rounded border border-blue-300 shrink-0">MONTHLY</span>
+                        </div>
+                        <div class="text-kpi-banner text-slate-900 mt-2 sm:mt-3 break-words sm:truncate" title="₹{{ number_format($monthlySales, 2) }}">
+                            ₹{{ number_format($monthlySales, 2) }}
+                        </div>
                     </div>
-                    <div class="text-kpi-banner text-slate-900 mt-2 sm:mt-3 font-bold">
-                        ₹{{ number_format($monthlySales, 2) }}
-                    </div>
-                    <div class="text-micro-label text-slate-600 font-medium mt-1.5 sm:mt-2 truncate">
+                    <div class="text-xs text-slate-500 font-medium mt-2 truncate">
                         Current month accumulation
                     </div>
                 </div>
 
                 <!-- Total Invoices -->
-                <div class="bg-white p-3.5 sm:p-5 rounded-xl shadow-sm border border-slate-300">
-                    <div class="flex items-center justify-between">
-                        <span class="text-micro-label font-bold text-slate-700 uppercase tracking-wider">Total Bills</span>
-                        <span class="text-micro-label font-bold text-slate-800 bg-slate-100 px-1.5 sm:px-2 py-0.5 rounded border border-slate-300">COUNT</span>
+                <div class="bg-white p-4 sm:p-5 rounded-xl shadow-sm border border-slate-300 min-w-0 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wider truncate">Total Bills</span>
+                            <span class="text-[10px] sm:text-xs font-bold text-slate-800 bg-slate-100 px-2 py-0.5 rounded border border-slate-300 shrink-0">COUNT</span>
+                        </div>
+                        <div class="text-kpi-banner text-slate-900 mt-2 sm:mt-3 truncate">
+                            {{ $totalInvoicesCount }}
+                        </div>
                     </div>
-                    <div class="text-kpi-banner text-slate-900 mt-2 sm:mt-3 font-bold">
-                        {{ $totalInvoicesCount }}
-                    </div>
-                    <div class="text-micro-label text-slate-600 font-medium mt-1.5 sm:mt-2 truncate">
+                    <div class="text-xs text-slate-500 font-medium mt-2 truncate">
                         Across {{ $totalCustomersCount }} registered customers
                     </div>
                 </div>
 
                 <!-- Total Inventory Spares -->
-                <div class="bg-white p-3.5 sm:p-5 rounded-xl shadow-sm border border-slate-300">
-                    <div class="flex items-center justify-between">
-                        <span class="text-micro-label font-bold text-slate-700 uppercase tracking-wider">Stock Catalog</span>
-                        <span class="text-micro-label font-bold text-slate-800 bg-slate-100 px-1.5 sm:px-2 py-0.5 rounded border border-slate-300">PARTS</span>
+                <div class="bg-white p-4 sm:p-5 rounded-xl shadow-sm border border-slate-300 min-w-0 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wider truncate">Stock Catalog</span>
+                            <span class="text-[10px] sm:text-xs font-bold text-slate-800 bg-slate-100 px-2 py-0.5 rounded border border-slate-300 shrink-0">PARTS</span>
+                        </div>
+                        <div class="text-kpi-banner text-slate-900 mt-2 sm:mt-3 truncate">
+                            {{ $totalSparesCount }} <span class="text-xs sm:text-sm font-normal text-slate-600">parts</span>
+                        </div>
                     </div>
-                    <div class="text-kpi-banner text-slate-900 mt-2 sm:mt-3 font-bold">
-                        {{ $totalSparesCount }} <span class="text-table-body font-normal text-slate-600">parts</span>
-                    </div>
-                    <div class="text-micro-label mt-1.5 sm:mt-2 truncate">
+                    <div class="text-xs mt-2 truncate">
                         @if($lowStockParts->count() > 0)
                             <span class="text-rose-700 font-bold">{{ $lowStockParts->count() }} Spares Low</span>
                         @else
