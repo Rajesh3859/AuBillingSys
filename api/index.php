@@ -11,13 +11,16 @@ if ($uri !== '/' && file_exists(__DIR__ . '/../public' . $uri)) {
 
 // Ensure storage and cache directories exist in Vercel writable /tmp
 $storageDir = '/tmp/storage';
+$bootstrapCacheDir = '/tmp/bootstrap/cache';
 if (!file_exists($storageDir)) {
     @mkdir($storageDir . '/app/public', 0755, true);
     @mkdir($storageDir . '/framework/views', 0755, true);
     @mkdir($storageDir . '/framework/cache/data', 0755, true);
     @mkdir($storageDir . '/framework/sessions', 0755, true);
     @mkdir($storageDir . '/logs', 0755, true);
-    @mkdir('/tmp/bootstrap/cache', 0755, true);
+}
+if (!file_exists($bootstrapCacheDir)) {
+    @mkdir($bootstrapCacheDir, 0755, true);
 }
 
 // Fallback SQLite database for Vercel if PostgreSQL is not configured
