@@ -22,7 +22,8 @@ $app = Application::configure(basePath: dirname(__DIR__))
 
 if (isset($_ENV['VERCEL']) || isset($_SERVER['VERCEL']) || isset($_ENV['VERCEL_ENV']) || getenv('VERCEL')) {
     $app->useStoragePath('/tmp/storage');
-    $app->instance('manifest.store', '/tmp/bootstrap/cache/packages.php');
+    $app['config']->set('cache.default', 'array');
+    $app['config']->set('session.driver', 'cookie');
 }
 
 return $app;
