@@ -60,6 +60,12 @@ putenv("CACHE_STORE=array");
 putenv("CACHE_DRIVER=array");
 putenv("SESSION_DRIVER=cookie");
 
+if (empty($_ENV['APP_MAINTENANCE_DRIVER']) && empty(getenv('APP_MAINTENANCE_DRIVER'))) {
+    putenv("APP_MAINTENANCE_DRIVER=file");
+    $_ENV['APP_MAINTENANCE_DRIVER'] = 'file';
+    $_SERVER['APP_MAINTENANCE_DRIVER'] = 'file';
+}
+
 putenv("APP_STORAGE_PATH={$storageDir}");
 putenv("LARAVEL_STORAGE_PATH={$storageDir}");
 putenv("VIEW_COMPILED_PATH={$storageDir}/framework/views");

@@ -34,6 +34,7 @@ if (isset($_ENV['VERCEL']) || isset($_SERVER['VERCEL']) || isset($_ENV['VERCEL_E
             'cache.default' => 'array',
             'session.driver' => 'cookie',
             'view.compiled' => '/tmp/storage/framework/views',
+            'app.maintenance.driver' => config('app.maintenance.driver') ?: 'file',
         ]);
     });
 }
