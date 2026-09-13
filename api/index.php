@@ -23,5 +23,14 @@ if (!file_exists($storageDir)) {
 putenv("APP_STORAGE_PATH={$storageDir}");
 putenv("VIEW_COMPILED_PATH={$storageDir}/framework/views");
 
-require __DIR__ . '/../public/index.php';
+try {
+    require __DIR__ . '/../public/index.php';
+} catch (\Throwable $e) {
+    http_response_code(500);
+    header('Content-Type: text/html');
+    echo "<h2>Laravel Vercel Runtime Error</h2>";
+    echo "<p><strong>Message:</strong> " . htmlspecialchars($e->getMessage()) . "</p>";
+    echo "<p><strong>File:</strong> " . htmlspecialchars($e->getFile()) . " (Line " . $e->getLine() . ")</p>";
+    echo "<h3>Stack Trace:</h3><pre>" . htmlspecialchars($e->getTraceAsString()) . "</pre>";
+}
 
