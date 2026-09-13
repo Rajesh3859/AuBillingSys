@@ -26,9 +26,10 @@ putenv("VIEW_COMPILED_PATH={$storageDir}/framework/views");
 try {
     require __DIR__ . '/../public/index.php';
 } catch (\Throwable $e) {
-    http_response_code(500);
+    http_response_code(200);
     header('Content-Type: text/html');
-    echo "<h2>Laravel Vercel Runtime Error</h2>";
+    echo "<style>body{font-family:sans-serif;padding:20px;background:#f8fafc;color:#0f172a}pre{background:#1e293b;color:#f8fafc;padding:15px;border-radius:8px;overflow-x:auto}</style>";
+    echo "<h1>Laravel Vercel Runtime Exception</h1>";
     echo "<p><strong>Message:</strong> " . htmlspecialchars($e->getMessage()) . "</p>";
     echo "<p><strong>File:</strong> " . htmlspecialchars($e->getFile()) . " (Line " . $e->getLine() . ")</p>";
     echo "<h3>Stack Trace:</h3><pre>" . htmlspecialchars($e->getTraceAsString()) . "</pre>";
