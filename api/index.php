@@ -61,7 +61,13 @@ putenv("CACHE_DRIVER=array");
 putenv("SESSION_DRIVER=cookie");
 
 putenv("APP_STORAGE_PATH={$storageDir}");
+putenv("LARAVEL_STORAGE_PATH={$storageDir}");
 putenv("VIEW_COMPILED_PATH={$storageDir}/framework/views");
+
+$_ENV['LARAVEL_STORAGE_PATH'] = $storageDir;
+$_SERVER['LARAVEL_STORAGE_PATH'] = $storageDir;
+$_ENV['VIEW_COMPILED_PATH'] = "{$storageDir}/framework/views";
+$_SERVER['VIEW_COMPILED_PATH'] = "{$storageDir}/framework/views";
 
 try {
     require __DIR__ . '/../public/index.php';
