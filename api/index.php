@@ -42,6 +42,11 @@ if (empty($_ENV['DB_CONNECTION']) && empty(getenv('DB_CONNECTION'))) {
     $_ENV['DB_DATABASE'] = $sqliteDb;
 }
 
+if (empty($_ENV['CACHE_STORE']) && empty(getenv('CACHE_STORE'))) {
+    putenv("CACHE_STORE=array");
+    $_ENV['CACHE_STORE'] = 'array';
+}
+
 if (empty($_ENV['SESSION_DRIVER']) && empty(getenv('SESSION_DRIVER'))) {
     putenv("SESSION_DRIVER=cookie");
     $_ENV['SESSION_DRIVER'] = 'cookie';
