@@ -7,6 +7,16 @@ if [ -n "$PORT" ]; then
     sed -i "s/:80/:$PORT/g" /etc/apache2/sites-available/*.conf
 fi
 
+# Ensure storage directories exist and have proper permissions
+mkdir -p /var/www/html/storage/framework/cache/data \
+         /var/www/html/storage/framework/sessions \
+         /var/www/html/storage/framework/views \
+         /var/www/html/storage/logs \
+         /var/www/html/bootstrap/cache
+
+chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+
 # Ensure SQLite file exists if using SQLite
 if [ "$DB_CONNECTION" = "sqlite" ] && [ -n "$DB_DATABASE" ]; then
     mkdir -p "$(dirname "$DB_DATABASE")"
@@ -14,7 +24,8 @@ if [ "$DB_CONNECTION" = "sqlite" ] && [ -n "$DB_DATABASE" ]; then
     chown www-data:www-data "$DB_DATABASE"
 fi
 
-# Optimize Laravel for production
+# Discover packages and optimize Laravel for production
+php artisan package:discover --ansi
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache

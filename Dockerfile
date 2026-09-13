@@ -16,17 +16,20 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
+    libicu-dev \
     zip \
     unzip \
     git \
     curl \
     sqlite3 \
     libsqlite3-dev \
-    && docker-php-ext-install pdo pdo_mysql pdo_pgsql pdo_sqlite bcmath zip opcache gd mbstring \
+    && docker-php-ext-install pdo pdo_mysql pdo_pgsql pdo_sqlite bcmath zip opcache gd mbstring intl \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+ENV COMPOSER_ALLOW_SUPERUSER=1
+ENV COMPOSER_MEMORY_LIMIT=-1
 
 # Configure Apache Document Root to /var/www/html/public
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
@@ -42,11 +45,16 @@ COPY . .
 # Copy compiled frontend assets from frontend stage
 COPY --from=frontend /app/public/build ./public/build
 
-# Install production PHP dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# Install production PHP dependencies without running build-time scripts or failing on platform checks
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts --ignore-platform-reqs
 
 # Set proper ownership and permissions for Laravel writable directories
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
+RUN mkdir -p /var/www/html/storage/framework/cache/data \
+             /var/www/html/storage/framework/sessions \
+             /var/www/html/storage/framework/views \
+             /var/www/html/storage/logs \
+             /var/www/html/bootstrap/cache \
+    && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Copy entrypoint script
