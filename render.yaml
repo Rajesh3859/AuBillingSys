@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: au-billing-sys
+    runtime: docker
+    plan: free
+    region: oregon
+    envVars:
+      - key: APP_NAME
+        value: "AutoSpares Billing"
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        value: base64:B/NCyXoOTtrQMolZ77gou1CxHMvQeHyVPAMbepRHD0c=
+      - key: RUN_MIGRATIONS
+        value: "true"
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: CACHE_STORE
+        value: database
+      - key: SESSION_DRIVER
+        value: database
+      - key: QUEUE_CONNECTION
+        value: sync
