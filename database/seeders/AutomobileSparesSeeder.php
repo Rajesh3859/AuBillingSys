@@ -9,7 +9,6 @@ use App\Models\InvoiceItem;
 use App\Models\SparePart;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class AutomobileSparesSeeder extends Seeder
 {
@@ -178,71 +177,71 @@ class AutomobileSparesSeeder extends Seeder
         }
 
         // Seed Invoices & Items if not present
-        if (!Invoice::where('invoice_number', 'INV-2026-0001')->exists()) {
+        if (! Invoice::where('invoice_number', 'INV-2026-0001')->exists()) {
             $inv1 = Invoice::create([
-            'invoice_number' => 'INV-2026-0001',
-            'customer_id' => $customerModels[0]->id,
-            'customer_name' => $customerModels[0]->name,
-            'customer_phone' => $customerModels[0]->phone,
-            'vehicle_number' => $customerModels[0]->vehicle_number,
-            'invoice_date' => now()->subDays(2),
-            'subtotal' => 5650.00,
-            'tax_amount' => 1017.00, // 18%
-            'discount' => 200.00,
-            'total_amount' => 6467.00,
-            'payment_status' => 'paid',
-            'payment_method' => 'upi',
-            'notes' => 'General service spares replacement.',
-        ]);
+                'invoice_number' => 'INV-2026-0001',
+                'customer_id' => $customerModels[0]->id,
+                'customer_name' => $customerModels[0]->name,
+                'customer_phone' => $customerModels[0]->phone,
+                'vehicle_number' => $customerModels[0]->vehicle_number,
+                'invoice_date' => now()->subDays(2),
+                'subtotal' => 5650.00,
+                'tax_amount' => 1017.00, // 18%
+                'discount' => 200.00,
+                'total_amount' => 6467.00,
+                'payment_status' => 'paid',
+                'payment_method' => 'upi',
+                'notes' => 'General service spares replacement.',
+            ]);
 
-        InvoiceItem::create([
-            'invoice_id' => $inv1->id,
-            'spare_part_id' => $spareModels[0]->id,
-            'part_number' => $spareModels[0]->part_number,
-            'part_name' => $spareModels[0]->name,
-            'quantity' => 1,
-            'unit_price' => $spareModels[0]->unit_price,
-            'tax_rate' => 18.00,
-            'total_price' => 2450.00,
-        ]);
+            InvoiceItem::create([
+                'invoice_id' => $inv1->id,
+                'spare_part_id' => $spareModels[0]->id,
+                'part_number' => $spareModels[0]->part_number,
+                'part_name' => $spareModels[0]->name,
+                'quantity' => 1,
+                'unit_price' => $spareModels[0]->unit_price,
+                'tax_rate' => 18.00,
+                'total_price' => 2450.00,
+            ]);
 
-        InvoiceItem::create([
-            'invoice_id' => $inv1->id,
-            'spare_part_id' => $spareModels[7]->id,
-            'part_number' => $spareModels[7]->part_number,
-            'part_name' => $spareModels[7]->name,
-            'quantity' => 1,
-            'unit_price' => $spareModels[7]->unit_price,
-            'tax_rate' => 18.00,
-            'total_price' => 2950.00,
-        ]);
+            InvoiceItem::create([
+                'invoice_id' => $inv1->id,
+                'spare_part_id' => $spareModels[7]->id,
+                'part_number' => $spareModels[7]->part_number,
+                'part_name' => $spareModels[7]->name,
+                'quantity' => 1,
+                'unit_price' => $spareModels[7]->unit_price,
+                'tax_rate' => 18.00,
+                'total_price' => 2950.00,
+            ]);
 
-        $inv2 = Invoice::create([
-            'invoice_number' => 'INV-2026-0002',
-            'customer_id' => $customerModels[2]->id,
-            'customer_name' => $customerModels[2]->name,
-            'customer_phone' => $customerModels[2]->phone,
-            'vehicle_number' => $customerModels[2]->vehicle_number,
-            'invoice_date' => now()->subHours(5),
-            'subtotal' => 15750.00,
-            'tax_amount' => 2835.00,
-            'discount' => 500.00,
-            'total_amount' => 18085.00,
-            'payment_status' => 'paid',
-            'payment_method' => 'card',
-            'notes' => 'Bulk supply to Apex Auto Care.',
-        ]);
+            $inv2 = Invoice::create([
+                'invoice_number' => 'INV-2026-0002',
+                'customer_id' => $customerModels[2]->id,
+                'customer_name' => $customerModels[2]->name,
+                'customer_phone' => $customerModels[2]->phone,
+                'vehicle_number' => $customerModels[2]->vehicle_number,
+                'invoice_date' => now()->subHours(5),
+                'subtotal' => 15750.00,
+                'tax_amount' => 2835.00,
+                'discount' => 500.00,
+                'total_amount' => 18085.00,
+                'payment_status' => 'paid',
+                'payment_method' => 'card',
+                'notes' => 'Bulk supply to Apex Auto Care.',
+            ]);
 
-        InvoiceItem::create([
-            'invoice_id' => $inv2->id,
-            'spare_part_id' => $spareModels[3]->id,
-            'part_number' => $spareModels[3]->part_number,
-            'part_name' => $spareModels[3]->name,
-            'quantity' => 1,
-            'unit_price' => $spareModels[3]->unit_price,
-            'tax_rate' => 18.00,
-            'total_price' => 8900.00,
-        ]);
+            InvoiceItem::create([
+                'invoice_id' => $inv2->id,
+                'spare_part_id' => $spareModels[3]->id,
+                'part_number' => $spareModels[3]->part_number,
+                'part_name' => $spareModels[3]->name,
+                'quantity' => 1,
+                'unit_price' => $spareModels[3]->unit_price,
+                'tax_rate' => 18.00,
+                'total_price' => 8900.00,
+            ]);
 
             InvoiceItem::create([
                 'invoice_id' => $inv2->id,

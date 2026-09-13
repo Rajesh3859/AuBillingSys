@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\Invoice;
 use App\Models\SparePart;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {

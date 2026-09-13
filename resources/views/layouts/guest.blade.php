@@ -7,13 +7,16 @@
 
         <title>{{ config('app.name', 'Rajesh Billing') }}</title>
 
-        <!-- Plus Jakarta Sans Google Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <!-- Self-Hosted Plus Jakarta Sans (Zero external hops, parallel same-origin preload) -->
+        <link rel="preload" href="/fonts/plus-jakarta-sans.woff2" as="font" type="font/woff2" crossorigin>
 
         <!-- Scripts & Styles -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @if (! Vite::isRunningHot() && file_exists(public_path('build/manifest.json')))
+            <style>{!! Vite::content('resources/css/app.css') !!}</style>
+        @else
+            @vite(['resources/css/app.css'])
+        @endif
+        @vite(['resources/js/app.js'])
     </head>
     <body class="font-sans text-slate-900 antialiased bg-slate-950">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-slate-950">

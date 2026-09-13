@@ -43,6 +43,7 @@ class SparePartController extends Controller
     public function create()
     {
         $categories = Category::all();
+
         return view('spares.create', compact('categories'));
     }
 
@@ -69,13 +70,14 @@ class SparePartController extends Controller
     public function edit(SparePart $spare)
     {
         $categories = Category::all();
+
         return view('spares.edit', compact('spare', 'categories'));
     }
 
     public function update(Request $request, SparePart $spare)
     {
         $validated = $request->validate([
-            'part_number' => 'required|string|max:100|unique:spare_parts,part_number,' . $spare->id,
+            'part_number' => 'required|string|max:100|unique:spare_parts,part_number,'.$spare->id,
             'name' => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
             'brand' => 'required|string|max:100',
@@ -95,6 +97,7 @@ class SparePartController extends Controller
     public function destroy(SparePart $spare)
     {
         $spare->delete();
+
         return redirect()->route('spares.index')->with('success', 'Spare part deleted successfully!');
     }
 }

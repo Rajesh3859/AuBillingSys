@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Customer;
 use App\Models\Invoice;
-use App\Models\InvoiceItem;
 use App\Models\SparePart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +16,7 @@ class BillingController extends Controller
         $categories = Category::all();
         $spareParts = SparePart::with('category')->where('stock_quantity', '>', 0)->get();
         $customers = Customer::orderBy('name')->get();
-        $nextInvoiceNumber = 'INV-' . date('Y') . '-' . str_pad(Invoice::count() + 1, 4, '0', STR_PAD_LEFT);
+        $nextInvoiceNumber = 'INV-'.date('Y').'-'.str_pad(Invoice::count() + 1, 4, '0', STR_PAD_LEFT);
 
         return view('billing.index', compact('categories', 'spareParts', 'customers', 'nextInvoiceNumber'));
     }
@@ -41,7 +40,7 @@ class BillingController extends Controller
         ]);
 
         try {
-            $invoice = DB::transaction(function () use ($validated, $request) {
+            $invoice = DB::transaction(function () use ($validated) {
                 $subtotal = 0;
                 $taxAmount = 0;
                 $itemsData = [];
@@ -85,11 +84,11 @@ class BillingController extends Controller
 
                 $totalAmount = max(0, $subtotal + $taxAmount - $discount);
 
-                $invoiceNumber = 'INV-' . date('Y') . '-' . str_pad(Invoice::count() + 1, 4, '0', STR_PAD_LEFT);
+                $invoiceNumber = 'INV-'.date('Y').'-'.str_pad(Invoice::count() + 1, 4, '0', STR_PAD_LEFT);
 
                 // Auto-create or link customer if new
                 $customerId = $validated['customer_id'] ?? null;
-                if (!$customerId && !empty($validated['customer_name']) && !empty($validated['customer_phone'])) {
+                if (! $customerId && ! empty($validated['customer_name']) && ! empty($validated['customer_phone'])) {
                     $customer = Customer::firstOrCreate(
                         ['phone' => $validated['customer_phone']],
                         [
@@ -123,7 +122,7 @@ class BillingController extends Controller
                 return $invoice;
             });
 
-            return redirect()->route('invoices.show', $invoice->id)->with('success', 'Invoice #' . $invoice->invoice_number . ' generated successfully!');
+            return redirect()->route('invoices.show', $invoice->id)->with('success', 'Invoice #'.$invoice->invoice_number.' generated successfully!');
         } catch (\Exception $e) {
             return back()->withInput()->with('error', $e->getMessage());
         }

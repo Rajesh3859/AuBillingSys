@@ -41,12 +41,14 @@ class InvoiceController extends Controller
     public function show(Invoice $invoice)
     {
         $invoice->load('items.sparePart', 'customer');
+
         return view('invoices.show', compact('invoice'));
     }
 
     public function print(Invoice $invoice)
     {
         $invoice->load('items.sparePart', 'customer');
+
         return view('invoices.print', compact('invoice'));
     }
 }
