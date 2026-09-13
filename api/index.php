@@ -48,15 +48,17 @@ if (empty($_ENV['DB_CONNECTION']) && empty(getenv('DB_CONNECTION'))) {
     $_ENV['DB_DATABASE'] = $sqliteDb;
 }
 
-if (empty($_ENV['CACHE_STORE']) && empty(getenv('CACHE_STORE'))) {
-    putenv("CACHE_STORE=array");
-    $_ENV['CACHE_STORE'] = 'array';
-}
+$_ENV['CACHE_STORE'] = $_ENV['CACHE_STORE'] ?? getenv('CACHE_STORE') ?: 'array';
+$_ENV['CACHE_DRIVER'] = $_ENV['CACHE_DRIVER'] ?? getenv('CACHE_DRIVER') ?: 'array';
+$_ENV['SESSION_DRIVER'] = $_ENV['SESSION_DRIVER'] ?? getenv('SESSION_DRIVER') ?: 'cookie';
 
-if (empty($_ENV['SESSION_DRIVER']) && empty(getenv('SESSION_DRIVER'))) {
-    putenv("SESSION_DRIVER=cookie");
-    $_ENV['SESSION_DRIVER'] = 'cookie';
-}
+$_SERVER['CACHE_STORE'] = $_ENV['CACHE_STORE'];
+$_SERVER['CACHE_DRIVER'] = $_ENV['CACHE_DRIVER'];
+$_SERVER['SESSION_DRIVER'] = $_ENV['SESSION_DRIVER'];
+
+putenv("CACHE_STORE=array");
+putenv("CACHE_DRIVER=array");
+putenv("SESSION_DRIVER=cookie");
 
 putenv("APP_STORAGE_PATH={$storageDir}");
 putenv("VIEW_COMPILED_PATH={$storageDir}/framework/views");
