@@ -30,10 +30,12 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
-# Automatically run database migrations if enabled
+# Automatically run database migrations and seeders if enabled
 if [ "$RUN_MIGRATIONS" = "true" ]; then
     echo "Running database migrations..."
     php artisan migrate --force
+    echo "Running database seeders..."
+    php artisan db:seed --force
 fi
 
 # Start Apache in the foreground

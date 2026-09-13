@@ -36,7 +36,7 @@ class AutomobileSparesSeeder extends Seeder
 
         $categoryModels = [];
         foreach ($categories as $catData) {
-            $categoryModels[$catData['slug']] = Category::create($catData);
+            $categoryModels[$catData['slug']] = Category::firstOrCreate(['slug' => $catData['slug']], $catData);
         }
 
         // Seed Spare Parts
@@ -141,7 +141,7 @@ class AutomobileSparesSeeder extends Seeder
 
         $spareModels = [];
         foreach ($parts as $partData) {
-            $spareModels[] = SparePart::create($partData);
+            $spareModels[] = SparePart::firstOrCreate(['part_number' => $partData['part_number']], $partData);
         }
 
         // Seed Customers
@@ -174,11 +174,12 @@ class AutomobileSparesSeeder extends Seeder
 
         $customerModels = [];
         foreach ($customers as $custData) {
-            $customerModels[] = Customer::create($custData);
+            $customerModels[] = Customer::firstOrCreate(['phone' => $custData['phone']], $custData);
         }
 
-        // Seed Invoices & Items
-        $inv1 = Invoice::create([
+        // Seed Invoices & Items if not present
+        if (!Invoice::where('invoice_number', 'INV-2026-0001')->exists()) {
+            $inv1 = Invoice::create([
             'invoice_number' => 'INV-2026-0001',
             'customer_id' => $customerModels[0]->id,
             'customer_name' => $customerModels[0]->name,
@@ -243,15 +244,16 @@ class AutomobileSparesSeeder extends Seeder
             'total_price' => 8900.00,
         ]);
 
-        InvoiceItem::create([
-            'invoice_id' => $inv2->id,
-            'spare_part_id' => $spareModels[6]->id,
-            'part_number' => $spareModels[6]->part_number,
-            'part_name' => $spareModels[6]->name,
-            'quantity' => 1,
-            'unit_price' => $spareModels[6]->unit_price,
-            'tax_rate' => 18.00,
-            'total_price' => 6850.00,
-        ]);
+            InvoiceItem::create([
+                'invoice_id' => $inv2->id,
+                'spare_part_id' => $spareModels[6]->id,
+                'part_number' => $spareModels[6]->part_number,
+                'part_name' => $spareModels[6]->name,
+                'quantity' => 1,
+                'unit_price' => $spareModels[6]->unit_price,
+                'tax_rate' => 18.00,
+                'total_price' => 6850.00,
+            ]);
+        }
     }
 }
